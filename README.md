@@ -1,1 +1,1 @@
-# cn-labs-spring24
+Computer Networks Labs (Spring 2024)
