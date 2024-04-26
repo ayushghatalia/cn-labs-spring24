@@ -278,7 +278,6 @@ def test_cmds(num):
             
         return score
     except Exception as e:
-        print(e)
         print_failed(f"msgc_check - 0.0/3.0")
         return score
     

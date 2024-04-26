@@ -1,0 +1,26 @@
+CLIENT: a; MODE: active
+CLIENT: b; MODE: passive
+CLIENT: c; MODE: active
+CLIENT: d; MODE: passive
+CLIENT: e; MODE: active
+a: NOOP
+c: LIST
+a:c:e:b:d
+e->a:01:hello
+a->b:02:crispy
+c:  CREATE FILE
+e: INVALID CMD
+a: EXIT
+c->c:03:sambar
+e: LIST
+c:e:b:d
+c: NOOP
+INVALID RECIPIENT: rava_idli
+INVALID RECIPIENT: a
+e: EXIT
+c: INVALID CMD
+c:  DELETE FILE
+c: LIST
+c:b:d
+c: EXIT
+SERVER TERMINATED: EXITING......
