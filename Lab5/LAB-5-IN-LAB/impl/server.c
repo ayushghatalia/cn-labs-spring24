@@ -106,6 +106,35 @@ int processReply(char *msg, int *cur_socket){
             CLIENT_THREADS[i] = CLIENT_THREADS[i+1];
 		}
 		CLIENT_NUM -= 1;
+
+        // Prepare a list of connected clients delimited by ':'
+		char msg[1024];
+		memset(msg, 0, 1024);
+        strcat(msg, "LIST-");
+		for(int i = 0; i < CLIENT_NUM - 1; i++){
+			strcat(msg, CLIENT_NAMES[i]);
+            if(CLIENT_MODES[i] == 1){
+                strcat(msg, "|r");
+            }
+            else{
+                strcat(msg, "|n");
+            }
+			strcat(msg, ":");
+		}
+		strcat(msg, CLIENT_NAMES[CLIENT_NUM-1]);
+        if(CLIENT_MODES[CLIENT_NUM-1] == 1){
+            strcat(msg, "|r");
+        }
+        else{
+            strcat(msg, "|n");
+        }
+		strcat(msg, "\n"); // Can log output on next line
+		// Send message to all clients
+        for(int i = 0; i < CLIENT_NUM; i++){
+            if(send(CLIENT_SOCKETS[i], msg, 1024, 0) == -1){ 
+                ;
+            }
+        }
 		return 2;
 	}
 
