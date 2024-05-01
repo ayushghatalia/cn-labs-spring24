@@ -1,0 +1,11 @@
+user1-LIST
+user1-MSGC:user2:Hello User2!
+user2-MSGC:user6:Hello User1!
+user1-GRPS:user3,user2,user4:group1
+user1-GRPS:user3,user2,user6:group1
+user1-MCST:group1:Hello Group1!
+user1-MCST:group2:Hello Group2!
+user2-BCST:Hello Everyone!
+user1-HIST
+user5-EXIT
+user1-LIST
